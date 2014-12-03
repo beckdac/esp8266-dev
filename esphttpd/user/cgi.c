@@ -86,7 +86,7 @@ int ICACHE_FLASH_ATTR cgiReadFlash(HttpdConnData *connData) {
 	}
 
 	if (*pos==0) {
-		os_printf("Start flash download.\n");
+		//os_printf("Start flash download.\n");
 		httpdStartResponse(connData, 200);
 		httpdHeader(connData, "Content-Type", "application/bin");
 		httpdEndHeaders(connData);

@@ -43,5 +43,5 @@ void user_init(void) {
 	stdoutInit();
 	ioInit();
 	httpdInit(builtInUrls, 80);
-	os_printf("\nReady\n");
+	//os_printf("\nReady\n");
 }

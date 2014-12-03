@@ -43,7 +43,7 @@ ScanResultData cgiWifiAps;
 void ICACHE_FLASH_ATTR wifiScanDoneCb(void *arg, STATUS status) {
 	int n;
 	struct bss_info *bss_link = (struct bss_info *)arg;
-	os_printf("wifiScanDoneCb %d\n", status);
+	//os_printf("wifiScanDoneCb %d\n", status);
 	if (status!=OK) {
 		cgiWifiAps.scanInProgress=0;
 		wifi_station_disconnect(); //test HACK
@@ -78,7 +78,7 @@ void ICACHE_FLASH_ATTR wifiScanDoneCb(void *arg, STATUS status) {
 		bss_link = bss_link->next.stqe_next;
 		n++;
 	}
-	os_printf("Scan done: found %d APs\n", n);
+	//os_printf("Scan done: found %d APs\n", n);
 	//We're done.
 	cgiWifiAps.scanInProgress=0;
 }
@@ -91,7 +91,7 @@ static void ICACHE_FLASH_ATTR wifiStartScan() {
 	x=wifi_station_get_connect_status();
 	if (x!=STATION_GOT_IP) {
 		//Unit probably is trying to connect to a bogus AP. This messes up scanning. Stop that.
-		os_printf("STA status = %d. Disconnecting STA...\n", x);
+		//os_printf("STA status = %d. Disconnecting STA...\n", x);
 		wifi_station_disconnect();
 	}
 	wifi_station_scan(NULL, wifiScanDoneCb);
@@ -140,7 +140,7 @@ static void ICACHE_FLASH_ATTR resetTimerCb(void *arg) {
 		wifi_set_opmode(1);
 		system_restart();
 	} else {
-		os_printf("Connect fail. Not going into STA-only mode.\n");
+		//os_printf("Connect fail. Not going into STA-only mode.\n");
 	}
 }
 

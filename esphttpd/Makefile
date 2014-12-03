@@ -12,17 +12,17 @@ BUILD_BASE	= build
 FW_BASE		= firmware
 
 # Base directory for the compiler
-XTENSA_TOOLS_ROOT ?= /opt/Espressif/crosstool-NG/builds/xtensa-lx106-elf/bin
+XTENSA_TOOLS_ROOT ?= /home/Espressif/crosstool-NG/builds/xtensa-lx106-elf/bin
 
 #Extra Tensilica includes from the ESS VM
-SDK_EXTRA_INCLUDES ?= /opt/Espressif/include
+SDK_EXTRA_INCLUDES ?= /home/Espressif/include
 
 # base directory of the ESP8266 SDK package, absolute
-SDK_BASE	?= /opt/Espressif/ESP8266_SDK
+SDK_BASE	?= /home/Espressif/ESP8266_SDK
 
 #Esptool.py path and port
 ESPTOOL		?= ../esptool.py
-ESPPORT		?= /dev/ttyUSB0
+ESPPORT		?= /dev/ttyUSB1
 
 # name for the target project
 TARGET		= httpd
@@ -35,7 +35,7 @@ EXTRA_INCDIR	= include \
 		$(SDK_EXTRA_INCLUDES)
 
 # libraries used in this project, mainly provided by the SDK
-LIBS		= c gcc hal phy net80211 lwip wpa main
+LIBS		= c gcc hal pp phy net80211 lwip wpa main
 
 # compiler flags using during compilation of source files
 CFLAGS		= -Os -ggdb -std=c99 -Werror -Wpointer-arith -Wundef -Wall -Wl,-EL -fno-inline-functions -nostdlib -mlongcalls -mtext-section-literals  -D__ets__ -DICACHE_FLASH
